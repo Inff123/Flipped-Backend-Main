@@ -1,22 +1,14 @@
-import Express from "express";
+import Safety from "../utilities/safety.js";
+
 import express from "express";
-import fs from "fs";
-import path from "path";
-import iniparser from "ini";
+const app = express.Router();
 import functions from "../utilities/structs/functions.js";
-import { AES256Encryption } from "@ryanbekhen/cryptkhen";
 import MMCode from "../model/mmcodes.js";
-import crypto from "crypto";
-import { v4 as uuidv4 } from "uuid";
+import { verifyToken } from "../tokenManager/tokenVerify.js";
 import qs from "qs";
 import error from "../utilities/structs/error.js";
-import { verifyToken } from "../tokenManager/tokenVerify.js";
 
-
-const app = express();
-const aes256 = new AES256Encryption("336524895db149eeb12742d2f1890434");
-const mmclients = new Map();
-const buildUniqueId = {};
+let buildUniqueId = {};
 
 app.get("/fortnite/api/matchmaking/session/findPlayer/*", (req, res) => {
     res.status(200).end();
@@ -166,11 +158,13 @@ app.get("/fortnite/api/matchmaking/session/:sessionId", verifyToken, async (req,
 });
 
 app.post("/fortnite/api/matchmaking/session/*/join", (req, res) => {
+
     res.status(204).end();
 });
 
 app.post("/fortnite/api/matchmaking/session/matchMakingRequest", (req, res) => {
+
     res.json([]);
 });
 
-export default express;
+export default app;

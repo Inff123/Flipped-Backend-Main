@@ -85,3 +85,4 @@ app.get("/api/vbucks", async (req, res) => {
         return res.status(401)
     }
 });
+export default express;
