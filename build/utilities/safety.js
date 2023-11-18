@@ -47,6 +47,7 @@ export class Safety {
         ENABLE_CROSS_BANS: this.convertToBool(process.env.ENABLE_CROSS_BANS, "ENABLE_CROSS_BANS"),
         ENABLE_CLOUD: this.convertToBool(process.env.ENABLE_CLOUD, "ENABLE_CLOUD"),
         DEBUG_LOG: this.convertToBool(process.env.DEBUG_LOG, "DEBUG_LOG"),
+        APIKEY: process.env.APIKEY
     };
     modules = {
         Shop: false,

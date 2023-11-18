@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const data = new SlashCommandBuilder()
     .setName('claimvbucks')
-    .setDescription('Claim your daily 250 V-Bucks')
+    .setDescription('Claim your daily 400 V-Bucks')
     .setDMPermission(false);
 
 export async function execute(interaction) {
@@ -40,7 +40,7 @@ export async function execute(interaction) {
             { type: 1, components: [confirm.toJSON(), cancel.toJSON()] }
         ];
         const confirmationEmbed = new EmbedBuilder()
-            .setTitle(`Claim your daily 250 V-Bucks?`)
+            .setTitle(`Claim your daily 400 V-Bucks?`)
             .setDescription("Once claimed, you cannot reclaim for the next 24 hours.")
             .setColor("1eff00")
             .setTimestamp();
@@ -69,7 +69,7 @@ export async function execute(interaction) {
                     await Profiles.findOneAndUpdate(
                         { accountId: user?.accountId }, 
                         { 
-                            $inc: { 'profiles.common_core.items.Currency:MtxPurchased.quantity': 250 }, 
+                            $inc: { 'profiles.common_core.items.Currency:MtxPurchased.quantity': 400 }, 
                             'profiles.lastVbucksClaim': Date.now() 
                         }
                     );
@@ -92,7 +92,7 @@ export async function execute(interaction) {
                         return res.status(404).json({ error: 'Something went wrong' });
                     }); 
                     const embed = new EmbedBuilder()
-                        .setTitle("250 V-Bucks Claimed")
+                        .setTitle("400 V-Bucks Claimed")
                         .setDescription(`You have claimed your daily 250 V-Bucks!`)
                         .setThumbnail ("https://media.discordapp.net/attachments/1134514551606476810/1152156761793511425/250vbucks.png")
                         .setColor("#1eff00")

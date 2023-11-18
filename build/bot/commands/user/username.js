@@ -30,8 +30,8 @@ export async function execute(interaction) {
         .setDescription("Your account username has been changed to " + username + "")
         .setColor("#2b2d31")
         .setFooter({
-        text: "Revive",
-        iconURL: "https://media.discordapp.net/attachments/1123367135444471962/1139339199141658704/tiltedlogo.png",
+        text: "Flipped",
+        iconURL: "https://cdn.discordapp.com/attachments/1175237541327274075/1175251623648444487/2fa0a9db5ad78bda424099711c3c410a.png?ex=656a8d5e&is=6558185e&hm=2427e70783c0587c1706cdaa969d4824bb5ae5e3f5e586bb33b3883db6c804f7&",
     })
         .setTimestamp();
     await interaction.editReply({ embeds: [embed] });

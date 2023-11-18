@@ -32,8 +32,8 @@ export async function execute(interaction) {
         .setDescription("This action is irreversible, and will delete all your data.")
         .setColor("#2b2d31")
         .setFooter({
-        text: "Revive",
-        iconURL: "https://media.discordapp.net/attachments/1123367135444471962/1139339199141658704/tiltedlogo.png",
+        text: "Flipped",
+        iconURL: "https://cdn.discordapp.com/attachments/1175237541327274075/1175251623648444487/2fa0a9db5ad78bda424099711c3c410a.png?ex=656a8d5e&is=6558185e&hm=2427e70783c0587c1706cdaa969d4824bb5ae5e3f5e586bb33b3883db6c804f7&",
     })
         .setTimestamp();
     const confirmationResponse = await interaction.reply({
@@ -54,8 +54,8 @@ export async function execute(interaction) {
                     .setDescription("Your account has been deleted, we're sorry to see you go!")
                     .setColor("#2b2d31")
                     .setFooter({
-                    text: "Revive",
-                    iconURL: "https://media.discordapp.net/attachments/1123367135444471962/1139339199141658704/tiltedlogo.png",
+                    text: "Flipped",
+                    iconURL: "https://cdn.discordapp.com/attachments/1175237541327274075/1175251623648444487/2fa0a9db5ad78bda424099711c3c410a.png?ex=656a8d5e&is=6558185e&hm=2427e70783c0587c1706cdaa969d4824bb5ae5e3f5e586bb33b3883db6c804f7&",
                 })
                     .setTimestamp();
                 i.reply({ embeds: [confirmEmbed], ephemeral: true });
@@ -67,8 +67,8 @@ export async function execute(interaction) {
                     .setDescription("Your account has not been deleted.")
                     .setColor("#2b2d31")
                     .setFooter({
-                    text: "Revive",
-                    iconURL: "https://media.discordapp.net/attachments/1123367135444471962/1139339199141658704/tiltedlogo.png",
+                    text: "Flipped",
+                    iconURL: "https://cdn.discordapp.com/attachments/1175237541327274075/1175251623648444487/2fa0a9db5ad78bda424099711c3c410a.png?ex=656a8d5e&is=6558185e&hm=2427e70783c0587c1706cdaa969d4824bb5ae5e3f5e586bb33b3883db6c804f7&",
                 })
                     .setTimestamp();
                 i.reply({ embeds: [cancelEmbed], ephemeral: true });

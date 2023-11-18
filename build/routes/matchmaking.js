@@ -8,7 +8,9 @@ import { verifyToken } from "../tokenManager/tokenVerify.js";
 import qs from "qs";
 import error from "../utilities/structs/error.js";
 
+const mmclients = new Map();
 let buildUniqueId = {};
+
 
 app.get("/fortnite/api/matchmaking/session/findPlayer/*", (req, res) => {
     res.status(200).end();
@@ -58,7 +60,6 @@ app.get("/fortnite/api/game/v2/matchmakingservice/ticket/player/*", verifyToken,
     const memory = functions.GetVersionInfo(req);
     console.log(memory, region);
     const partyId = "@ikjdfiuosdfuyidsufb@";
-    const signatureHash = crypto.createHash("sha256").update(uuidv4()).digest("hex");
     const payload = {
         playerId: req.user.accountId,
         partyPlayerIds: [req.user.accountId],
@@ -85,15 +86,13 @@ app.get("/fortnite/api/game/v2/matchmakingservice/ticket/player/*", verifyToken,
             "player.option.microphoneEnabled": true,
         },
         expireAt: new Date(Date.now() + 1000 * 30).toISOString(),
-        nonce: signatureHash,
     };
     const data = Buffer.from(JSON.stringify(payload));
-    const encryptedPayload = aes256.encrypt(data).toString("base64");
+
     const matchmakerIP = Safety.env.MATCHMAKER_IP;
     return res.json({
         "serviceUrl": matchmakerIP.includes("ws") || matchmakerIP.includes("wss") ? matchmakerIP : `ws://${matchmakerIP}`,
         "ticketType": "mms-player",
-        "payload": encryptedPayload,
         "signature": signatureHash,
     });
 });

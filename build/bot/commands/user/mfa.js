@@ -39,7 +39,7 @@ export async function execute(interaction) {
         },
     ])
         .setFooter({
-        text: "Revive",
+        text: "Flipped",
         iconURL: "https://media.discordapp.net/attachments/1123367135444471962/1139339199141658704/tiltedlogo.png",
     })
         .setTimestamp();
