@@ -1,7 +1,6 @@
 ClientSettings/
 *.Sav
 node_modules/
-build
 .env
 package-lock.json
 missing-endpoints.json
