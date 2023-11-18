@@ -93,7 +93,6 @@ app.get("/fortnite/api/game/v2/matchmakingservice/ticket/player/*", verifyToken,
     return res.json({
         "serviceUrl": matchmakerIP.includes("ws") || matchmakerIP.includes("wss") ? matchmakerIP : `ws://${matchmakerIP}`,
         "ticketType": "mms-player",
-        "signature": signatureHash,
     });
 });
 
