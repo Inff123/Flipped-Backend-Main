@@ -1,10 +1,8 @@
 import express from "express";
-const app = express();
+const app = express.Router();
 const bcrypt = import("bcrypt");
 import User from "./model/user.js";
 import Profile from "./model/profiles.js";
-import functions from "./utilities/structs/functions.js";
-import fs from "fs";
 import Safety from './utilities/safety.js';
 const APIKEY = Safety.env.APIKEY
 
@@ -85,4 +83,4 @@ app.get("/api/vbucks", async (req, res) => {
         return res.status(401)
     }
 });
-export default express;
+export default app;
