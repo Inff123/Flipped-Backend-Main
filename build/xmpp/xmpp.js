@@ -7,7 +7,7 @@ import logger from "../utilities/structs/log.js";
 import functions from "../utilities/structs/functions.js";
 import User from "../model/user.js";
 import Friends from "../model/friends.js";
-const port = 80;
+const port = 81;
 const wss = new WebSocketServer({ server: app.listen(port) });
 import matchmaker from "../matchmaker/matchmaker.js";
 let domain = "prod.ol.epicgames.com";

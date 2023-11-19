@@ -63,7 +63,7 @@
         {
             "gameId": "Fortnite",
             "eventTemplateId": "EventTemplate_EraTournament",
-            "playlistId": "Playlist_Playground",
+            "playlistId": "Playlist_DefaultSolo",
             "matchCap": 0,
             "liveSessionAttributes": [],
             "scoringRules": []

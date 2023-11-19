@@ -99,6 +99,9 @@ for (const fileName of fs.readdirSync(path.join(__dirname, "routes"))) {
     if (fileName.includes(".map"))
         continue;
     ;
+    if (fileName.includes(".ejs"))
+       continue;
+    ;
     try {
         app.use((await import(`file://${__dirname}/routes/${fileName}`)).default);
     }

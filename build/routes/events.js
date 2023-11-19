@@ -5,10 +5,10 @@ import path from "path";
 import { dirname } from 'dirname-filename-esm';
 const __dirname = dirname(import.meta);
 app.get("/api/v1/events/Fortnite/download/:accountId", async (req, res) => {
-    /*
+    
     const events = JSON.parse(fs.readFileSync(path.join(__dirname, "../../responses/eventlistactive.json"), "utf8"));
     res.json(events);
-    */
+    
 });
 app.get("/api/v1/players/Fortnite/tokens", async (req, res) => {
     res.json({});

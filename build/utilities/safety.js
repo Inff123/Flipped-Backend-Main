@@ -30,6 +30,8 @@ export class Safety {
         MONGO_URI: process.env.MONGO_URI,
         BOT_TOKEN: process.env.BOT_TOKEN,
         CLIENT_ID: process.env.CLIENT_ID,
+        CLIENT_SECRET: process.env.clientSecret,
+        AUTH_URL: process.env.AUTH_Url,
         GUILD_ID: process.env.GUILD_ID,
         NAME: process.env.NAME,
         PORT: parseInt(process.env.PORT),
