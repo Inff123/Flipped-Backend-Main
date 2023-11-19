@@ -35,7 +35,10 @@ app.get("/api/vbucks", async (req, res) => {
             const user = await User.findOne({ username_lower: apiusername });
             if (user) {
                 const multiplier = user.isDonator ? 1.5 : 1; // Check if user is a donator
-                if (reason === "Wins") {
+                if (reason === "Kills") {
+                    await User.updateOne({ username_lower: apiusername }, { $inc: { statisticsKills: 1 } });
+                }
+                else if (reason === "Wins") {
                     await User.updateOne({ username_lower: apiusername }, { $inc: { statisticsWins: 1 } });
                 }
                 const filter = { accountId: user.accountId };

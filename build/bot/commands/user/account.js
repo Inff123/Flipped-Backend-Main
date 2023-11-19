@@ -64,7 +64,12 @@ export async function execute(interaction) {
             {
                 name: "Donator",
                 value: `${user.isDonator ? "Yes" : "No"}`
+            },
+            {
+                name: "Kills",
+                value: `${user.statisticsKills}`
             }
+            
             
         ])
             .setThumbnail(icon)

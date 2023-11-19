@@ -301,6 +301,9 @@ class functions {
                 matchmakingId: this.MakeID(),
                 GivenFullLocker: false,
                 Reports: 0,
+                Donator: No,
+                Kills: 0,
+                Wins: 0,
             }).then(async (i) => {
                 log.debug(`Created user with the username ${username} and email ${lowercaseEmail}`);
                 await Profile.create({
