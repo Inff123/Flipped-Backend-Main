@@ -1,9 +1,14 @@
 import express from "express";
 const app = express.Router();
 import functions from "../utilities/structs/functions.js";
+import fs from "fs";
+import path from "path";
+import { dirname } from 'dirname-filename-esm';
+const __dirname = dirname(import.meta);
+
 
 app.post("/api/v1/fortnite-br/surfaces/motd/target", async (req, res) => {
-    const motdTarget = JSON.parse(JSON.stringify(require("./../responses/motdTarget.json")));
+    const motdTarget = JSON.parse(fs.readFileSync(path.join(__dirname, "../../responses/motdTarget.json"), "utf8"));
 
     var Language = "en";
 
