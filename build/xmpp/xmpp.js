@@ -9,7 +9,7 @@ import User from "../model/user.js";
 import Friends from "../model/friends.js";
 const port = 80;
 const wss = new WebSocketServer({ server: app.listen(port) });
-import matchmaker from "../matchmaker/matchmaker.js";
+import matchmaker from "../matchmaker/matchmaker.cjs";
 let domain = "prod.ol.epicgames.com";
 global.Clients = [];
 // multi user chat rooms (global chat/party chat)

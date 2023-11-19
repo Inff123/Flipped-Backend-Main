@@ -36,6 +36,7 @@ export class Safety {
         GAME_SERVERS: process.env.GAME_SERVERS?.split(" "),
         ALLOW_REBOOT: this.convertToBool(process.env.ALLOW_REBOOT, "ALLOW_REBOOT"),
         MATCHMAKER_IP: process.env.MATCHMAKER_IP,
+        UNIVERSAL_GAMESERVERS: (process.env.UNIVERSAL_GAMESERVERS, "UNIVERSAL_GAMESERVERS"),
         MAIN_SEASON: parseInt(process.env.MAIN_SEASON),
         USE_S3: this.convertToBool(process.env.USE_S3, "USE_S3"),
         S3_BUCKET_NAME: process.env.S3_BUCKET_NAME,
