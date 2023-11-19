@@ -130,7 +130,7 @@ class functions {
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].stage = "Winter19";
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[1].stage = "Winter19";
             }
-            if (memory.build == 19.10) {
+            if (memory.build == 19.01) {
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].stage = "winter2021";
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].backgroundimage = "https://cdn.discordapp.com/attachments/927739901540188200/930880158167085116/t-bp19-lobby-xmas-2048x1024-f85d2684b4af.png";
                 contentpages.subgameinfo.battleroyale.image = "https://cdn.discordapp.com/attachments/927739901540188200/930880421514846268/19br-wf-subgame-select-512x1024-16d8bb0f218f.jpg";
