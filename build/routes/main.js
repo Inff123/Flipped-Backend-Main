@@ -178,11 +178,11 @@ app.post("/datarouter/api/v1/public/data", (req, res) => {
     res.status(204);
     res.end();
 });
-express.post("/api/v1/assets/Fortnite/*/*", async (req, res) => {
+app.post("/api/v1/assets/Fortnite/*/*", async (req, res) => {
     res.json({"FortCreativeDiscoverySurface":{"meta":{"promotion":1},"assets":{}}})
 })
 
-express.get("/region", async (req, res) => {
+app.get("/region", async (req, res) => {
     res.json({
         "continent": {
             "code": "EU",
