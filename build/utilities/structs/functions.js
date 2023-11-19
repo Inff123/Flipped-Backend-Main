@@ -92,7 +92,7 @@ class functions {
         let Language = "en";
         try {
             if (req.headers["accept-language"]) {
-                if (req.headers["accept-language"].includes("-") && req.headers["accept-language"] != "es-419") {
+                if (req.headers["accept-language"].includes("-") && req.headers["accept-language"] != "es-419" && req.headers["accept-language"] != "pt-BR") {
                     Language = req.headers["accept-language"].split("-")[0];
                 }
                 else {
@@ -103,6 +103,7 @@ class functions {
         catch { }
         const modes = ["saveTheWorldUnowned", "battleRoyale", "creative", "saveTheWorld"];
         const news = ["savetheworldnews", "battleroyalenews"];
+        const motdnews = ["battleroyalenews", "battleroyalenewsv2"]
         try {
             modes.forEach(mode => {
                 contentpages.subgameselectdata[mode].message.title = contentpages.subgameselectdata[mode].message.title[Language];
@@ -120,6 +121,14 @@ class functions {
         }
         catch { }
         try {
+            motdnews.forEach(news => {
+                contentpages[news].news.motds.forEach(motd => {
+                    motd.title = motd.title[Language];
+                    motd.body = motd.body[Language];
+                })
+            })
+        } catch (err) {}
+        try {
             contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].stage = `season${memory.season}`;
             contentpages.dynamicbackgrounds.backgrounds.backgrounds[1].stage = `season${memory.season}`;
             if (memory.season == 10) {
@@ -130,10 +139,10 @@ class functions {
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].stage = "Winter19";
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[1].stage = "Winter19";
             }
-            if (memory.build == 19.01) {
+            if (memory.build == 19.10) {
                 contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].stage = "winter2021";
-                contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].backgroundimage = "https://cdn.discordapp.com/attachments/927739901540188200/930880158167085116/t-bp19-lobby-xmas-2048x1024-f85d2684b4af.png";
-                contentpages.subgameinfo.battleroyale.image = "https://cdn.discordapp.com/attachments/927739901540188200/930880421514846268/19br-wf-subgame-select-512x1024-16d8bb0f218f.jpg";
+                contentpages.dynamicbackgrounds.backgrounds.backgrounds[0].backgroundimage = "https://cdn2.unrealengine.com/t-bp19-lobby-xmas-2048x1024-f85d2684b4af.png";
+                contentpages.subgameinfo.battleroyale.image = "https://cdn2.unrealengine.com/19br-wf-subgame-select-512x1024-16d8bb0f218f.jpg";
                 contentpages.specialoffervideo.bSpecialOfferEnabled = "true";
             }
             if (memory.season == 20) {

@@ -31,7 +31,7 @@
             "url": "https://fortnite-public-service-prod11.ol.epicgames.com/images/motd.png"
           }
         ],
-        "tabTitleOverride": "LawinServer",
+        "tabTitleOverride": "Flipped",
         "tileImage": [
           {
             "width": 1024,
@@ -40,18 +40,18 @@
           }
         ],
         "title": {
-          "ar": "مرحبًا بك في LawinServer!",
-          "en": "Welcome to LawinServer!",
-          "de": "Willkommen bei LawinServer!",
-          "es": "¡Bienvenidos a LawinServer!",
-          "es-419": "¡Bienvenidos a LawinServer!",
-          "fr": "Bienvenue sur LawinServer !",
-          "it": "Benvenuto in LawinServer!",
-          "ja": "LawinServerへようこそ！",
-          "ko": "LawinServer에 오신 것을 환영합니다!",
-          "pl": "Witaj w LawinServerze!",
-          "pt-BR": "Bem-vindo ao LawinServer!",
-          "ru": "Добро пожаловать в LawinServer!",
+          "ar": "مرحبًا بك في Flipped!",
+          "en": "Welcome to Flipped!",
+          "de": "Willkommen bei Flipped!",
+          "es": "¡Bienvenidos a Flipped!",
+          "es-419": "¡Bienvenidos a Flipped!",
+          "fr": "Bienvenue sur Flipped !",
+          "it": "Benvenuto in Flipped!",
+          "ja": "Flippedへようこそ！",
+          "ko": "Flipped에 오신 것을 환영합니다!",
+          "pl": "Witaj w Flippedze!",
+          "pt-BR": "Bem-vindo ao Flipped!",
+          "ru": "Добро пожаловать в Flipped!",
           "tr": "LavinServer'a Hoş Geldiniz!"
         },
         "videoAutoplay": false,
