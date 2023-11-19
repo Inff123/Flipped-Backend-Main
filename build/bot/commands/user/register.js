@@ -20,9 +20,9 @@ export const data = new SlashCommandBuilder()
         .setRequired(true));
 
 export async function execute(interaction) {
-    const ALLOWED_CHANNEL_ID = '1175267607658635304';
+    const ALLOWED_CHANNEL_ID = '1175838553012437103';
     if (interaction.channelId !== ALLOWED_CHANNEL_ID) {
-        return interaction.reply({ content: "Please register in the <#1175267607658635304> channel.", ephemeral: true });
+        return interaction.reply({ content: "Please register in the <#1175838553012437103> channel.", ephemeral: true });
     }
 
     await interaction.deferReply({ ephemeral: true });
