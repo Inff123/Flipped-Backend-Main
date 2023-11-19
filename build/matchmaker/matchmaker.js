@@ -31,7 +31,7 @@ class matchmaker {
         });
 
         //On error connecting to socket.io server
-        socket.on("connect_error", (err => {
+        socket.on("connect_error", (err) => {
             log.debug("Failed to connect to socket.io server");
             log.debug("Socket.io error: " + err);
         });
