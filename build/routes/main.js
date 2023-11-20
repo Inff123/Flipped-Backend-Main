@@ -17,11 +17,8 @@ app.post("/fortnite/api/game/v2/tryPlayOnPlatform/account/*", (req, res) => {
 app.get("/launcher/api/public/distributionpoints/", (req, res) => {
     res.json({
         "distributions": [
-            "https://download.epicgames.com/",
-            "https://download2.epicgames.com/",
-            "https://download3.epicgames.com/",
-            "https://download4.epicgames.com/",
-            "https://epicgames-download1.akamaized.net/"
+            "https://lawinserver.ol.epicgames.com/"
+
         ]
     });
 });
@@ -140,11 +137,11 @@ app.get("/api/v1/events/Fortnite/download/*", (req, res) => {
     res.json({});
 });
 app.post("/api/v1/assets/Fortnite/*/*", async (req, res) => {
-    /*if (req.body.hasOwnProperty("FortCreativeDiscoverySurface") && req.body.FortCreativeDiscoverySurface == 0) {
-        const discovery_api_assets = require("../../responses/Athena/Discovery/discovery_api_assets.json");
+    if (req.body.hasOwnProperty("FortCreativeDiscoverySurface") && req.body.FortCreativeDiscoverySurface == 0) {
+        const discovery_api_assets = JSON.parse(fs.readFileSync(path.join(__dirname, "../../responses/discovery/discovery_api_assets.json"), "utf8"));
         res.json(discovery_api_assets)
     }
-    else {*/
+    else {
     res.json({
         "FortCreativeDiscoverySurface": {
             "meta": {
@@ -154,7 +151,7 @@ app.post("/api/v1/assets/Fortnite/*/*", async (req, res) => {
         }
     });
 }
-/*}*/ );
+} );
 app.get("/fortnite/api/game/v2/twitch/*", (req, res) => {
     res.status(200);
     res.end();
