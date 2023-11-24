@@ -248,6 +248,136 @@ app.post("/fortnite/api/game/v2/profile/*/client/GiftCatalogEntry", verifyToken,
         responseVersion: 1
     });
 });
+
+// Open gift 19.01
+express.post("/fortnite/api/game/v2/profile/*/client/UnlockRewardNode", async (req, res) => {
+    const profile = require(`./profiles/${req.query.profileId || "athena"}.json`);
+    const common_core = require("./profiles/common_core.json");
+    const WinterFestIDS = require("./responses/winterfest2021rewards.json");
+
+    // do not change any of these or you will end up breaking it
+    var ApplyProfileChanges = [];
+    var MultiUpdate = [];
+    var BaseRevision = profile.rvn || 0;
+    var QueryRevision = req.query.rvn || -1;
+    var StatChanged = false;
+
+    const ID = makeid();
+    const GiftID = makeid();
+
+    if (req.body.nodeId && req.body.rewardGraphId) {
+        if (WinterFestIDS[req.body.nodeId].toLowerCase().startsWith("homebasebannericon:")) {
+            MultiUpdate.push({
+                "profileRevision": common_core.rvn || 0,
+                "profileId": "common_core",
+                "profileChangesBaseRevision": common_core.rvn || 0,
+                "profileChanges": [],
+                "profileCommandRevision": common_core.commandRevision || 0,
+            })
+
+            common_core.items[ID] = {
+                "templateId": WinterFestIDS[req.body.nodeId],
+                "attributes": {
+                    "max_level_bonus": 0,
+                    "level": 1,
+                    "item_seen": false,
+                    "xp": 0,
+                    "variants": [],
+                    "favorite": false
+                },
+                "quantity": 1
+            };
+
+            MultiUpdate[0].profileChanges.push({
+                "changeType": "itemAdded",
+                "itemId": ID,
+                "item": common_core.items[ID]
+            })
+
+            common_core.rvn += 1;
+            common_core.commandRevision += 1;
+    
+            MultiUpdate[0].profileRevision = common_core.rvn || 0;
+            MultiUpdate[0].profileCommandRevision = common_core.commandRevision || 0;
+        }
+
+        if (!WinterFestIDS[req.body.nodeId].toLowerCase().startsWith("homebasebannericon:")) {
+            profile.items[ID] = {
+                "templateId": WinterFestIDS[req.body.nodeId],
+                "attributes": {
+                    "max_level_bonus": 0,
+                    "level": 1,
+                    "item_seen": false,
+                    "xp": 0,
+                    "variants": [],
+                    "favorite": false
+                },
+                "quantity": 1
+            };
+
+            ApplyProfileChanges.push({
+                "changeType": "itemAdded",
+                "itemId": ID,
+                "item": profile.items[ID]
+            })
+        }
+
+        profile.items[GiftID] = {"templateId":"GiftBox:gb_winterfestreward","attributes":{"max_level_bonus":0,"fromAccountId":"","lootList":[{"itemType":WinterFestIDS[req.body.nodeId],"itemGuid":ID,"itemProfile":"athena","attributes":{"creation_time":new Date().toISOString()},"quantity":1}],"level":1,"item_seen":false,"xp":0,"giftedOn":new Date().toISOString(),"params":{"SubGame":"Athena","winterfestGift":"true"},"favorite":false},"quantity":1};
+        profile.items[req.body.rewardGraphId].attributes.reward_keys[0].unlock_keys_used += 1;
+        profile.items[req.body.rewardGraphId].attributes.reward_nodes_claimed.push(req.body.nodeId);
+
+        StatChanged = true;
+    }
+
+    if (StatChanged == true) {
+        profile.rvn += 1;
+        profile.commandRevision += 1;
+
+        ApplyProfileChanges.push({
+            "changeType": "itemAdded",
+            "itemId": GiftID,
+            "item": profile.items[GiftID]
+        })
+
+        ApplyProfileChanges.push({
+            "changeType": "itemAttrChanged",
+            "itemId": req.body.rewardGraphId,
+            "attributeName": "reward_keys",
+            "attributeValue": profile.items[req.body.rewardGraphId].attributes.reward_keys
+        })
+
+        ApplyProfileChanges.push({
+            "changeType": "itemAttrChanged",
+            "itemId": req.body.rewardGraphId,
+            "attributeName": "reward_nodes_claimed",
+            "attributeValue": profile.items[req.body.rewardGraphId].attributes.reward_nodes_claimed
+        })
+
+        fs.writeFileSync(`./profiles/${req.query.profileId || "athena"}.json`, JSON.stringify(profile, null, 2));
+        fs.writeFileSync("./profiles/common_core.json", JSON.stringify(common_core, null, 2));
+    }
+
+    // this doesn't work properly on version v12.20 and above but whatever
+    if (QueryRevision != BaseRevision) {
+        ApplyProfileChanges = [{
+            "changeType": "fullProfileUpdate",
+            "profile": profile
+        }];
+    }
+
+    res.json({
+        "profileRevision": profile.rvn || 0,
+        "profileId": req.query.profileId || "athena",
+        "profileChangesBaseRevision": BaseRevision,
+        "profileChanges": ApplyProfileChanges,
+        "profileCommandRevision": profile.commandRevision || 0,
+        "serverTime": new Date().toISOString(),
+        "multiUpdate": MultiUpdate,
+        "responseVersion": 1
+    })
+    res.end();
+});
+
 app.post("/fortnite/api/game/v2/profile/*/client/RemoveGiftBox", verifyToken, async (req, res) => {
     const profiles = await Profile.findOne({ accountId: req.user.accountId });
     if (!(await profileManager.validateProfile(req.query.profileId, profiles)))
