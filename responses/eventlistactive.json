@@ -34,7 +34,7 @@
                     "beginTime": "2021-01-01T01:00:00.000Z",
                     "endTime": "9999-01-01T01:00:00.000Z",
                     "blackoutPeriods": [],
-                    "round": 0,
+                    "round": 1,
                     "payoutDelay": 0,
                     "isTBD": false,
                     "canLiveSpectate": false,
