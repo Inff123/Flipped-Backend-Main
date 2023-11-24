@@ -250,7 +250,7 @@ app.post("/fortnite/api/game/v2/profile/*/client/GiftCatalogEntry", verifyToken,
 });
 
 // Open gift 19.01
-express.post("/fortnite/api/game/v2/profile/*/client/UnlockRewardNode", async (req, res) => {
+app.post("/fortnite/api/game/v2/profile/*/client/UnlockRewardNode", async (req, res) => {
     const profile = require(`./profiles/${req.query.profileId || "athena"}.json`);
     const common_core = require("./profiles/common_core.json");
     const WinterFestIDS = require("./responses/winterfest2021rewards.json");

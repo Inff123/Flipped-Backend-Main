@@ -1,6 +1,8 @@
 import express from "express";
 const app = express.Router();
 import functions from "../utilities/structs/functions.js";
+
+
 app.get("/fortnite/api/calendar/v1/timeline", (req, res) => {
     const memory = functions.GetVersionInfo(req);
     let activeEvents = [
@@ -15,6 +17,15 @@ app.get("/fortnite/api/calendar/v1/timeline", (req, res) => {
             "activeSince": "2020-01-01T00:00:00.000Z"
         }
     ];
+
+    if (req.headers["user-agent"].includes("Release-19.10")) {
+        activeEvents.push(
+        {
+                "eventType": "EventFlag.LTE_WinterFest",
+                "activeUntil": "9999-01-01T00:00:00.000Z",
+                "activeSince": "2020-01-01T00:00:00.000Z"
+        })
+    }
     const todayAtMidnight = new Date();
     todayAtMidnight.setHours(24, 0, 0, 0);
     const todayOneMinuteBeforeMidnight = new Date(todayAtMidnight.getTime() - 60000);
