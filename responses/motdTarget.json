@@ -28,7 +28,7 @@
           {
             "width": 1920,
             "height": 1080,
-            "url": "https://fortnite-public-service-prod11.ol.epicgames.com/images/motd.png"
+            "url": "https://i.imgur.com/B8LMLXY.jpg"
           }
         ],
         "tabTitleOverride": "Flipped",
@@ -36,7 +36,7 @@
           {
             "width": 1024,
             "height": 512,
-            "url": "https://fortnite-public-service-prod11.ol.epicgames.com/images/motd-s.png"
+            "url": "https://i.imgur.com/B8LMLXY.jpg"
           }
         ],
         "title": {
@@ -59,7 +59,7 @@
         "videoMute": false,
         "videoStreamingEnabled": false,
         "websiteButtonText": "Discord",
-        "websiteURL": "https://discord.gg/KJ8UaHZ"
+        "websiteURL": "https://discord.gg/flipped"
       },
       "contentSchemaName": "MotdWebsiteNewsWithVideo"
     }
